@@ -1,0 +1,359 @@
+@import "normalize";
+@import "compass";
+@import "susy";
+@import "breakpoint";
+@import 'https://fonts.googleapis.com/css?family=Lato:300,400,700';
+@import 'https://fonts.googleapis.com/css?family=Cabin:300,400,700';
+
+$mobile-screen: 0 800px;
+$susy: (
+  columns: 16,
+  gutters: 3,
+  global-box-sizing: border-box
+);
+
+@include border-box-sizing;
+
+body {
+    background: #252525;
+}
+
+html body {
+    background: #252525;
+    color: #fff;
+}
+.container-fluide {
+    background: #252525;
+    color: #fff;
+    min-height: 100vh;
+    height: 100%;
+
+    .menu {
+        // @include span(4 of 16);
+        display: none;
+    }
+
+    .app {
+
+        .app-container {
+            position: relative;
+        }
+
+        .main-screen {
+            width: 100%;
+            @include breakpoint($mobile-screen) {
+                width: 100%;
+            }
+        }
+
+        .secondary-screen {
+            width: 50%;
+            @include breakpoint($mobile-screen) {
+                display: none;
+            }
+            float: left;
+
+            > div {
+                > header {
+                    > h2, h4 {
+                        text-align: center;
+                        font-family: 'Cabin';
+                    }
+
+                    > h2 {
+                        margin-bottom: 0;
+                        color: #b3b046;
+                    }
+
+                    > h4 {
+                        margin-top: 0;
+                        font-weight: lighter;
+                    }
+                }
+
+                .recharts-responsive-container {
+                    margin: 0 auto;
+                }
+            }
+        }
+
+        // @include span(12 of 16 last);
+        @include breakpoint($mobile-screen) {
+            width: 100%;
+        }
+        width: 100%;
+        margin: 0 auto;
+
+        header {
+            position: relative;
+            position: fixed;
+            padding-top: 5px;
+            padding-bottom: 25px;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            width: 100%;
+            background-color: #252525;
+
+
+            div.statsbar {
+                &.highs {
+                    padding: 12px 0px 0px 80px;
+                }
+                &.lows {
+                    padding: 12px 80px 0px 0px;
+                }
+
+
+
+                &.highs span.active.petitCarre {
+                    background-color: #73B101;
+                }
+                &.lows span.active.petitCarre {
+                    background-color: red;
+                }
+
+                width: 50%;
+                float: left;
+            }
+
+            > .logo {
+                position: absolute;
+                top: 0px;
+                width: 160px;
+                padding-top: 6px;
+                text-align: center;
+                width: 100%;
+                h1 {
+                    font-family: 'Lato';
+                    font-weight: lighter;
+                    letter-spacing: 2px;
+                    margin: 0;
+                    font-size: 40px;
+                }
+                h2 {
+                    letter-spacing: 0px;
+                    font-family: "gotham narrow";
+                    font-weight: 200;
+                    font-size: 11px;
+                    margin: 0;
+                    white-space: nowrap;
+                }
+            }
+
+            span.petitCarre {
+                width: 8px;
+                height: 8px;
+                margin: 2px;
+                box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1);
+                display: inline-block;
+                content: "";
+                background-color: #2a2b2a;
+                transition: background-color 1s;
+
+                &.active {
+                    transition: background-color 1s;
+                }
+            }
+
+            div.carreContainer {
+                width: 100%;
+                text-align: center;
+                height: 12px;
+            }
+        }
+
+        div.message {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #73b101;
+        }
+
+        .highs-column {
+            color: #73b101;
+            a { color: #73b101 !important;}
+
+            .tick.active {
+                div.cell {
+                    background-color: #73b101 !important;
+                }
+                background-color: #73b101 !important;
+                color: #fff !important;
+                a { color: #fff !important; }
+            }
+        }
+
+        .lows-column {
+            color: #ff0100;
+            a { color: #ff0100 !important; }
+            .tick.active {
+                div.cell {
+                    background-color: #ff0100 !important;
+                }
+                background-color: #ff0100 !important;
+                color: #fff !important;
+                a { color: #fff !important; }
+            }
+        }
+
+        .tick-column {
+            margin-top: 85px;
+            height: 1200px;
+            overflow: scroll;
+            width: 50%;
+            float: left;
+            font-family: Cabin;
+            a {
+                text-decoration: none;
+            }
+
+
+            .tick:nth-child(odd) {
+                background: #2a2b2a;
+                div.cell {
+                    background: #2a2b2a;
+                }
+            }
+
+            .tick:nth-child(even) {
+                background: #353535;
+                div.cell {
+                    background: #353535;
+                }
+            }
+
+            .tick {
+                text-align: center;
+
+                > div.front {
+
+                }
+
+                > div.back {
+                    display: none;
+                }
+
+                div.cell {
+                    background: transparent;
+                    width: 33.33333%;
+                    margin: 0;
+                    float: left;
+                    padding: 10px 0;
+                    position: relative;
+
+                    &.stocktwits::before {
+                        position: absolute;
+                        left: 0;
+                        display: block;
+                        content: "";
+                        width: 17px;
+                        height: 17px;
+                        background-image: url('../imgs/stock-tweets.svg?v=2');
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                    }
+                }
+            }
+        }
+    }
+}
+
+div.cf {
+    @include pie-clearfix();    
+}
+
+.hide-mobile {
+    @include breakpoint($mobile-screen) {
+        display: none;
+    }
+}
+
+.navbar {
+    background-color: #222 !important;
+    background-image: none !important;
+}
+
+a.subscribe-button {
+    cursor: pointer;
+    display: inline-block;
+    font-family: Lato;
+    color: #BFBFBF;
+    font-weight: 200;
+    @include breakpoint($mobile-screen) {
+        width: 50%;
+    }
+    width: 20%;
+    height: 40px;
+    text-align: center;
+    padding-top: 10px;
+    /*transition: .5s all;*/
+    white-space: nowrap;
+
+    @include breakpoint($mobile-screen) {
+        display: none;
+    }
+}
+
+a.subscribe-button.active {
+   font-weight: bold;
+   transition: .5s all;
+}
+
+.tab-content-enter {
+  opacity: 0.1;
+}
+
+.tab-content-enter.tab-content-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+
+.tab-content-leave {
+  opacity: 1;
+}
+
+.tab-content-leave.tab-content-leave-active {
+  opacity: 0.01;
+  transition: opacity 200ms ease-in;
+}
+
+.action-icon:hover {
+    color: green !important;
+}
+
+.alert-form-input {
+    background: #212121;
+    border: 1px inset #73B101;
+    color: #BFBFBF;
+    padding: 2px 7px;
+    line-height: 25px;
+    @include box-shadow(rgba(#73B101, 1) 0 0 10px, rgba(#73B101, 0.3) 0 0 3px 1px inset);
+    &:hover{
+        @include box-shadow(rgba(#73B101, 1) 0 0 10px, rgba(#73B101, 0.3) 0 0 3px 1px inset);
+    }
+}
+
+.alert-form-input.error-input {
+    @include box-shadow(rgba(red, 1) 0 0 10px, rgba(red, 0.3) 0 0 3px 1px inset);
+    border: 1px inset red !important;
+    &:hover {
+        @include box-shadow(rgba(red, 1) 0 0 10px, rgba(red, 0.3) 0 0 3px 1px inset);
+    }
+}
+.alert-table-row {
+    a {
+        text-decoration: none;
+        color: #bfbfbf;
+        &:hover {
+            border-bottom: 1px dashed #bfbfbf;
+        }
+    }
+
+}
+
+.quote-item-cell {
+    span {
+        font-weight: bold;
+        padding-right: 10px;
+    }
+}

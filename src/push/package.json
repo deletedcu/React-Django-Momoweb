@@ -1,0 +1,14 @@
+{
+  "name": "momoweb-push",
+  "version": "0.0.1",
+  "description": "",
+  "main": "worker.js",
+  "author": "",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "request": "^2.81.0",
+    "socket.io-client": "^2.0.2"
+  },
+  "devDependencies": {
+  }
+}

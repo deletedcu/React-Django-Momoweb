@@ -1,0 +1,74 @@
+@function rem($pxval) {
+  $base: 10;
+  @return ($pxval / $base) * 1rem;
+}
+
+@mixin appearance-none {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+@mixin sassy-checkbox {
+  position: absolute;
+  left: -1000rem;
+
+  + label {
+    position: relative;
+    cursor: pointer;
+    margin-right: rem(15);
+    padding-left: rem(25);
+    font-size: rem(14);
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: rem(16);
+      width: rem(16);
+      border-radius: rem(3);
+      background-color: $sassy-base-color;
+      font-family: sans-serif;
+    }
+
+    &::after {
+      content: '';
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+  }
+
+  /* Not depending on the user's font here improves consistency. */
+  &:checked + label::after {
+    content: '';
+    position: absolute;
+    display: block;
+    opacity: 1;
+    left: rem(5);
+    top: 0;
+    width:  rem(3);
+    height: rem(11);
+    border: solid $sassy-accent-color;
+    border-width: 0 rem(3) rem(3) 0;
+    transform: rotate(45deg);
+    line-height: rem(16);
+  }
+
+  &:focus + label::before {
+    box-shadow: 0 rem(1) 0 darken($sassy-base-color, 30%);
+  }
+
+  &:disabled {
+    + label {
+      cursor: not-allowed;
+
+      &::before {
+        background-color: $sassy-disabled-color;
+      }
+    }
+
+    &:checked + label::after {
+      border-color: darken($sassy-disabled-color, 30%);
+    }
+  }
+}

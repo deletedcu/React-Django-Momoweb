@@ -1,0 +1,47 @@
+{% extends "djstripe/base.html" %}
+{% load static djstripe_tags %}
+
+{% block head_title %}MOMO | Choose a Subscription{% endblock %}
+{% block title %}Choose a Subscription{% endblock title %}
+
+{% block content %}
+{{ block.super }}
+<ul class="breadcrumb">
+  <li><a href="{% url 'dashboard:main' %}">MOMO</a></li>
+  <li class="active">PLANS</li>
+</ul>
+<h2>Choose your subscription</h2>
+
+{% if error %}
+    <div class="alert alert-error">{{ error }}</div>
+{% endif %}
+{% if view.error %}
+    <div class="alert alert-error">{{ view.error }}</div>
+{% endif %}
+
+<div class="row">
+    {% for plan in PLAN_LIST %}
+        {% if plan.stripe_plan_id != 'pro-daily' %}
+        <a class="col-xs-12 plan-item" href="{% url 'djstripe:confirm' plan=plan.plan %}">
+            <div class="col-xs-7">
+                <div class="plan-title">{{ plan.name }}</div>
+                <div class="plan-descr">{{ plan.description }}</div>
+            </div>
+            <div class="col-xs-offset-1 col-xs-4">
+                <div class="plan-price">${{ plan.price|djdiv:100 }}</div>
+                {% if plan.discount %}
+                    <div class="plan-stock">(Save {{plan.discount}})</div>
+                {% endif %}
+            </div>
+        </a>
+        {% endif %}
+    {% endfor %}
+    <div class="col-xs-12 plan-special">
+        <a class="plan-special-title" href="{% url 'djstripe:confirm' plan='daily' %}">
+            Not sure? Try our day pass for just $1
+        </a>
+    </div>
+
+</div>
+
+{% endblock content %}

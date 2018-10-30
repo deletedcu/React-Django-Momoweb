@@ -1,0 +1,116 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "volumes": [
+    {
+      "name": "momoweb-app",
+      "host": {
+        "sourcePath": "/var/app/current"
+      }
+    },
+    {
+      "name": "momoweb-logs",
+      "host": {
+        "sourcePath": "/var/app/current/logs"
+      }
+    },
+    {
+      "name": "momoweb-static",
+      "host": {
+        "sourcePath": "/var/app/current/src/static"
+      }
+    },
+    {
+      "name": "nginx-proxy-conf",
+      "host": {
+        "sourcePath": "/var/app/current/contrib/nginx/conf.d"
+      }
+    }
+  ],
+  "containerDefinitions": [
+    {
+      "name": "momoweb",
+      "image": "atarakanoff/momoweb:latest",
+      "environment": [],
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 9090,
+          "containerPort": 9090
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "momoweb-app",
+          "containerPath": "/opt/momoweb"
+        },
+        {
+          "sourceVolume": "momoweb-logs",
+          "containerPath": "/opt/momoweb/logs"
+        }
+      ]
+    },
+    {
+      "name": "momoweb-push",
+      "image": "atarakanoff/momoweb-push:latest",
+      "environment": [
+        {
+          "name": "MOMO_API_HOST",
+          "value": "http://nginx-proxy/"
+        },
+        {
+          "name": "NODE_PATH",
+          "value": "/tmp/node_modules"
+        }
+      ],
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 9010,
+          "containerPort": 9010
+        }
+      ],
+      "links": [
+        "nginx-proxy"
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "momoweb-app",
+          "containerPath": "/opt/momoweb"
+        }
+      ]
+    },
+    {
+      "name": "nginx-proxy",
+      "image": "nginx",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": [
+        "momoweb"
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "momoweb-static",
+          "containerPath": "/var/www/html",
+          "readOnly": true
+        },
+        {
+          "sourceVolume": "nginx-proxy-conf",
+          "containerPath": "/etc/nginx/conf.d",
+          "readOnly": true
+        },
+        {
+          "sourceVolume": "awseb-logs-nginx-proxy",
+          "containerPath": "/var/log/nginx"
+        }
+      ]
+    }
+  ]
+}

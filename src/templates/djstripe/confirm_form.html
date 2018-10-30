@@ -1,0 +1,189 @@
+{% extends "djstripe/base.html" %}
+{% load static djstripe_tags %}
+
+{% block head_title %}MOMO | Choose a Subscription{% endblock %}
+{% block title %}Choose a Subscription{% endblock title %}
+
+{% block content %}
+{{ block.super }}
+<ul class="breadcrumb">
+    <li><a href="{% url 'dashboard:main' %}">MOMO</a></li>
+    <li><a href="{% url 'djstripe:subscribe' %}">PLANS</a></li>
+    <li class="active">CONFIRM</li>
+</ul>
+<h2>Click to confirm your plan</h2>
+
+
+{% if error %}
+    <div class="alert alert-error">{{ error }}</div>
+{% endif %}
+{% if view.error %}
+    <div class="alert alert-error">{{ view.error }}</div>
+{% endif %}
+
+<div class="row">
+    <div class="col-xs-12">
+        <form
+            action="{% url 'djstripe:confirm' plan=plan.plan %}" class="djstripe-subscribe"
+            data-key="{{ STRIPE_PUBLIC_KEY }}"
+            data-amount="{{ plan.price }}"
+            data-name="{{ plan.name }}"
+            data-description="{{ plan.description }}"
+        method="POST" id="real-payment-form">
+
+        {% csrf_token %}
+        <input type="hidden" name="plan" value="{{ plan.plan }}" />
+        <input name="stripe_token" id="stripe_token" type="hidden" />
+
+        <a class="col-xs-12 plan-item" href="{% url 'djstripe:confirm' plan=plan.plan %}">
+            <div class="col-xs-7">
+                <div class="plan-title">{{ plan.name }}</div>
+                <div class="plan-descr">{{ plan.description }}</div>
+            </div>
+            <div class="col-xs-offset-1 col-xs-4">
+                <div class="plan-price">${{ plan.price|djdiv:100 }}</div>
+                {% if plan.discount %}
+                    <div class="plan-stock">(Save {{plan.discount}})</div>
+                {% endif %}
+            </div>
+        </a>
+
+        </form>
+
+
+    </div>
+</div>
+<div class="row" style="display: none; opacity: 0.3;" id="payment-form-row">
+    <div class="stripe-form">
+        <script src="https://js.stripe.com/v3/"></script>
+        <form id="payment-form">
+          <label>
+            <input name="cardholder-name" class="field is-empty" placeholder="" />
+            <span><span>Name</span></span>
+          </label>
+          <label>
+            <input class="field is-empty" type="tel" placeholder="" />
+            <span><span>Phone</span></span>
+          </label>
+          <label>
+            <div id="card-element" class="field is-empty"></div>
+            <span><span>Card</span></span>
+          </label>
+          <button type="submit">Pay ${{ plan.price|djdiv:100 }}</button>
+          <div class="outcome">
+            <div class="error" role="alert"></div>
+            <div class="success" style="display: none;">
+              Success! Your Stripe token is <span class="token"></span>
+            </div>
+          </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+{% block javascript %}
+{{ block.super }}
+
+
+
+
+
+<script text="text/javascript">
+    $(function() {
+        $('.plan-item').on('click', function(e) {
+            $('#payment-form-row').animate({
+                width: [ "toggle", "swing" ],
+                height: [ "toggle", "swing" ],
+                opacity: 0.9
+            }, 'fast');
+            e.preventDefault();
+        });
+        var stripe = Stripe('{{ STRIPE_PUBLIC_KEY }}');
+        var elements = stripe.elements();
+
+        var card = elements.create('card', {
+          iconStyle: 'solid',
+          style: {
+            base: {
+              iconColor: 'white',
+              color: 'white',
+              lineHeight: '36px',
+              fontWeight: 300,
+              fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+              fontSize: '19px',
+
+              '::placeholder': {
+                color: 'white',
+              },
+            },
+            invalid: {
+              iconColor: '#e85746',
+              color: '#e85746',
+            }
+          },
+          classes: {
+            focus: 'is-focused',
+            empty: 'is-empty',
+          },
+        });
+        card.mount('#card-element');
+
+        var inputs = document.querySelectorAll('input.field');
+        Array.prototype.forEach.call(inputs, function(input) {
+          input.addEventListener('focus', function() {
+            input.classList.add('is-focused');
+          });
+          input.addEventListener('blur', function() {
+            input.classList.remove('is-focused');
+          });
+          input.addEventListener('keyup', function() {
+            if (input.value.length === 0) {
+              input.classList.add('is-empty');
+            } else {
+              input.classList.remove('is-empty');
+            }
+          });
+        });
+
+        function stripeTokenHandler(token) {
+            var form = document.getElementById('real-payment-form');
+            var hiddenInput = document.getElementById('stripe_token');
+            hiddenInput.setAttribute('value', token.id);
+            form.submit();
+        }
+
+        function setOutcome(result) {
+          var successElement = document.querySelector('.success');
+          var errorElement = document.querySelector('.error');
+          successElement.classList.remove('visible');
+          errorElement.classList.remove('visible');
+
+          if (result.token) {
+            // Use the token to create a charge or a customer
+            // https://stripe.com/docs/charges
+            successElement.querySelector('.token').textContent = result.token.id;
+            successElement.classList.add('visible');
+            stripeTokenHandler(result.token);
+          } else if (result.error) {
+            errorElement.textContent = result.error.message;
+            errorElement.classList.add('visible');
+          }
+        }
+
+        card.on('change', function(event) {
+          setOutcome(event);
+        });
+
+        $('#payment-form').get(0).addEventListener('submit', function(e) {
+          e.preventDefault();
+          var form = $('#payment-form').get(0);
+          var extraDetails = {
+            name: form.querySelector('input[name=cardholder-name]').value,
+          };
+          stripe.createToken(card, extraDetails).then(setOutcome);
+        });
+    });
+</script>
+{% endblock javascript %}

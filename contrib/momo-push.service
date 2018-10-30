@@ -1,0 +1,13 @@
+[Unit]
+Description=momo.push nodejs daemon
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/opt/venv/momo.web/momo.web/src/
+ExecStart=/bin/bash -c 'exec /usr/bin/nodejs /opt/venv/momo.web/momo.web/src/worker.js >>/var/log/momo-push/worker.log 2>&1'
+Environment=NODE_PATH=/usr/local/lib/node_modules NODE_ENV=production PORT=1337
+
+[Install]
+WantedBy=multi-user.target

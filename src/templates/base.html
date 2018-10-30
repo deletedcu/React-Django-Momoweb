@@ -1,0 +1,72 @@
+{% load staticfiles %}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block head_title %}MOMO |{% endblock %}</title>
+
+    <link rel="icon" type="image/png" href="{% static 'imgs/favicon/favicon-32x32.png' %}?v=1" sizes="32x32" />
+    <link rel="icon" type="image/png" href="{% static 'imgs/favicon/favicon-16x16.png' %}?v=1" sizes="16x16" />
+    <link rel="shortcut icon" href="{% static 'imgs/favicon/favicon.ico' %}?v=1" type="image/x-icon">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/bootstrap.css' %}?v=4">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/bootstrap-social.css' %}">
+
+    <!-- Latest JQuery (IE9+) -->
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/screen.css' %}?v=7">
+
+    {% block extra_head %}
+    {% endblock %}
+  </head>
+  <body>
+    {% block body %}
+
+      {% block header %}
+        <div class='logo'>
+            <h1>MOMO</h1>
+            <h2>PROFIT FROM MOMENTUM</h2>
+        </div>
+      {% endblock %}
+
+      {% block nav %}
+      {% endblock %}
+
+      <div class="container">
+
+        {% if messages %}
+        <div>
+          <strong>Messages:</strong>
+          <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+      </div>
+      {% block extra_body %}
+      {% endblock %}
+
+    {% endblock %}
+
+    {% block javascript %}
+    {% endblock %}
+  </body>
+</html>

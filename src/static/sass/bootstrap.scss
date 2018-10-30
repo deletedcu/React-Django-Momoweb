@@ -1,0 +1,319 @@
+// @import "normalize";
+@import "compass";
+@import "compass/css3";
+@import "susy";
+@import "breakpoint";
+@import 'https://fonts.googleapis.com/css?family=Lato:300,400,700';
+@import 'https://fonts.googleapis.com/css?family=Cabin:300,400,700';
+@import "checkbox";
+
+$mobile-screen: 0 800px;
+
+$sassy-base-color: #777 !default;
+$sassy-accent-color: coral !default;
+$sassy-disabled-color: #eee !default;
+
+$susy: (
+  columns: 16,
+  gutters: 3,
+  global-box-sizing: border-box
+);
+
+@include border-box-sizing;
+
+body {
+    background: #252525;
+    color: #fff;
+}
+
+.logo {
+    width: 160px;
+    padding-top: 16px;
+    text-align: center;
+    width: 100%;
+    h1 {
+        font-family: 'Lato';
+        font-weight: lighter;
+        letter-spacing: 2px;
+        margin: 0;
+        font-size: 40px;
+    }
+    h2 {
+        letter-spacing: 0px;
+        font-family: "gotham narrow";
+        font-weight: 200;
+        font-size: 11px;
+        margin: 0;
+        white-space: nowrap;
+    }
+}
+
+.container {
+    max-width: 500px !important;
+    margin: 40px auto;
+}
+
+// Login form
+form.login, form.signup {
+    label[for="id_login"], label[for="id_password"] {
+        display: none;
+    }
+    label {
+        color: #999;
+    }
+
+    *:focus {
+        outline: none;
+    }
+    .signin-msg {
+        padding: 0px 0px 20px;
+        color: #dfdfdf;
+    }
+
+    input[type="text"], input[type="password"], input[type="email"] {
+        background: darken(#252525, 2%);
+        border: none;
+        margin: 7px auto;
+        width: 100%;
+        display: block;
+        color: #ccc;
+        padding: 12px 0 12px 10px;
+    }
+
+
+    p {
+        margin: 0;
+    }
+
+    .social-login-buttons {
+        margin-top: 20px;
+        a {
+            margin-right: 10px;
+        }
+    }
+}
+
+button.btn-signin, button.btn-signout, button.btn-signup {
+    margin: 0 auto;
+    border-radius: 0;
+    background-color: darken(#73b101, 10%) !important;
+    margin-top: 8px;
+    width: 100%;
+
+    &:hover {
+        color:#dfdfdf;
+        background-color: darken(#73b101, 15%) !important;
+    }
+}
+
+.breadcrumb {
+    background-color: inherit !important;
+    padding: 8px 0px !important;
+    li {
+        color: white !important;
+        font-family: 'Lato';
+        font-size: 22px;
+    }
+    a {
+        color: white;
+        &:visited {
+            color: white;
+        }
+    }
+
+    li+li:before, li.active:after {
+        content: "";
+        padding: 0;
+    }
+    li:after {
+        padding: 0 5px;
+        color: #ccc;
+        content: ">";
+    }
+    li.active {
+        border-bottom: 3px solid #8fb800;
+        padding: 0;
+    }
+}
+
+h2 {
+    color: white !important;
+    font-family: 'Lato';
+    font-size: 18px;
+    text-align: center;
+}
+
+.plan-item {
+    margin-top: 15px;
+    background-image: inherit !important;
+    border-radius: 1px !important;
+    background-color: #8FB800 !important;
+    padding:  10px 10px 10px 30px;
+    text-align: left;
+    font-family: Lato;
+    display: block;
+    color: white;
+
+    border: 2px solid #B2D16C;
+
+    &:hover {
+        border: 2px solid #D9FB3F;
+        color:white;
+        @include box-shadow(rgba(white, 1) 0 0 25px, rgba(white, 0.3) 0 0 3px 1px inset);
+    }
+    &:visited {
+        color:white;
+        text-decoration: none;
+    }
+
+    .plan-title {
+        font-size: 30px;
+    }
+    .plan-price {
+        font-size: 32px;
+        width: 100%;
+    }
+    .plan-stock {
+        text-align: right;
+    }
+}
+
+.plan-special {
+    font-family: Lato;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+    .plan-special-title {
+        color: #aaa;
+    }
+}
+
+.stripe-form {
+    margin-top: 70px;
+    form {
+      width: 480px;
+      margin: 20px auto;
+    }
+
+    label {
+      height: 35px;
+      position: relative;
+      color: #fff;
+      display: block;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+
+    label > span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      font-weight: 300;
+      line-height: 32px;
+      color: #fff;
+      border-bottom: 1px solid #fff;
+      transition: border-bottom-color 200ms ease-in-out;
+      cursor: text;
+      pointer-events: none;
+    }
+
+    label > span span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: 0% 50%;
+      transition: transform 200ms ease-in-out;
+      cursor: text;
+    }
+
+    label .field.is-focused + span span,
+    label .field:not(.is-empty) + span span {
+      transform: scale(0.68) translateY(-36px);
+      cursor: default;
+    }
+
+    label .field.is-focused + span {
+      border-bottom-color: #8fb800;
+    }
+
+    .field {
+      background: transparent;
+      font-weight: 300;
+      border: 0;
+      color: #fff;
+      outline: none;
+      cursor: text;
+      display: block;
+      width: 100%;
+      line-height: 32px;
+      padding-bottom: 3px;
+      transition: opacity 200ms ease-in-out;
+    }
+
+    .field::-webkit-input-placeholder { color: #fff; }
+    .field::-moz-placeholder { color: #fff; }
+
+    /* IE doesn't show placeholders when empty+focused */
+     .field:-ms-input-placeholder { color: #424770; }
+
+    .field.is-empty:not(.is-focused) {
+      opacity: 0;
+    }
+
+    button {
+      float: left;
+      display: block;
+      background: #8FB800;
+      color: white;
+      border-radius: 2px;
+      border: 0;
+      margin-top: 20px;
+      font-size: 19px;
+      font-weight: 400;
+      width: 100%;
+      height: 47px;
+      line-height: 45px;
+      outline: none;
+    }
+
+    button:focus {
+      background: #8FB800;
+    }
+
+    button:active {
+      background: #8FB800;
+    }
+
+    .outcome {
+      float: left;
+      width: 100%;
+      padding-top: 8px;
+      min-height: 20px;
+      text-align: center;
+    }
+
+    .success, .error {
+      display: none;
+      font-size: 15px;
+    }
+
+    .success.visible, .error.visible {
+      display: inline;
+    }
+
+    .error {
+      color: #E4584C;
+    }
+
+    .success {
+      color: #34D08C;
+    }
+
+    .success .token {
+      font-weight: 500;
+      font-size: 15px;
+    }
+}
+

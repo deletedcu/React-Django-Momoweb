@@ -1,0 +1,60 @@
+{% load staticfiles %}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MOMO Web</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/screen.css' %}?v=15">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css" >
+
+    <link rel="icon" type="image/png" href="{% static 'imgs/favicon/favicon-32x32.png' %}?v=1" sizes="32x32" />
+    <!--link rel="icon" type="image/png" href="{% static 'imgs/favicon/favicon-16x16.png' %}?v=1" sizes="16x16" /-->
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="manifest" href="{% static 'js/manifest.json' %}">
+  </head>
+  <body>
+
+    <div class="container-fluide">
+      <div class="menu"></div>
+      <div class="app" id="react-app">
+        <!-- <div class="message">
+          Market is closed.
+        </div>
+        <div class="highs-column tick-column">
+          {% for high in highs %}
+          <div class="tick">
+            <div class="front">
+              <div class="cell">{{ high.0 }}</div>
+              <div class="cell">{{ high.1 }}</div>
+              <div class="cell">{{ high.2 }}</div>
+            </div>
+            <div class="back">
+              <div class="cell">1</div>
+              <div class="cell">2</div>
+              <div class="cell">3</div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="lows-column tick-column">
+          {% for high in lows %}
+          <div class="tick">
+            <div class="cell">{{ high.0 }}</div>
+            <div class="cell">{{ high.1 }}</div>
+            <div class="cell">{{ high.2 }}</div>
+          </div>
+          {% endfor %}
+        </div> -->
+      </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.6/socket.io.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/bundle.js' %}?v=46"></script>
+    <script type="text/javascript" src="{% static 'js/pusher.js' %}?v=10"></script>
+    
+  </body>
+</html>

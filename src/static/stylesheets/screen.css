@@ -1,0 +1,850 @@
+/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Change the default font family in all browsers (opinionated).
+ * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
+ */
+@import "https://fonts.googleapis.com/css?family=Lato:300,400,700";
+@import "https://fonts.googleapis.com/css?family=Cabin:300,400,700";
+/* line 8, ../sass/_normalize.scss */
+html {
+  font-family: Cabin sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+/* line 18, ../sass/_normalize.scss */
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ * 2. Add the correct display in IE.
+ */
+/* line 31, ../sass/_normalize.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+  /* 1 */
+  display: block;
+}
+
+/**
+ * Add the correct display in IE 9-.
+ */
+/* line 50, ../sass/_normalize.scss */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+/* line 61, ../sass/_normalize.scss */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+/* line 70, ../sass/_normalize.scss */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Add the correct display in IE 10-.
+ * 1. Add the correct display in IE.
+ */
+/* line 79, ../sass/_normalize.scss */
+template,
+[hidden] {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+/* line 92, ../sass/_normalize.scss */
+a {
+  background-color: transparent;
+  /* 1 */
+  -webkit-text-decoration-skip: objects;
+  /* 2 */
+}
+
+/**
+ * Remove the outline on focused links when they are also active or hovered
+ * in all browsers (opinionated).
+ */
+/* line 102, ../sass/_normalize.scss */
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * 1. Remove the bottom border in Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+/* line 115, ../sass/_normalize.scss */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
+}
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+/* line 125, ../sass/_normalize.scss */
+b,
+strong {
+  font-weight: inherit;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+/* line 134, ../sass/_normalize.scss */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+/* line 143, ../sass/_normalize.scss */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+/* line 152, ../sass/_normalize.scss */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Add the correct background and color in IE 9-.
+ */
+/* line 161, ../sass/_normalize.scss */
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+/* line 170, ../sass/_normalize.scss */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+/* line 179, ../sass/_normalize.scss */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 187, ../sass/_normalize.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* line 191, ../sass/_normalize.scss */
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+/* line 202, ../sass/_normalize.scss */
+img {
+  border-style: none;
+}
+
+/**
+ * Hide the overflow in IE.
+ */
+/* line 210, ../sass/_normalize.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+/* line 222, ../sass/_normalize.scss */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/**
+ * Add the correct margin in IE 8.
+ */
+/* line 234, ../sass/_normalize.scss */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+/* line 243, ../sass/_normalize.scss */
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change font properties to `inherit` in all browsers (opinionated).
+ * 2. Remove the margin in Firefox and Safari.
+ */
+/* line 257, ../sass/_normalize.scss */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+
+/**
+ * Restore the font weight unset by the previous rule.
+ */
+/* line 269, ../sass/_normalize.scss */
+optgroup {
+  font-weight: bold;
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+/* line 278, ../sass/_normalize.scss */
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+/* line 288, ../sass/_normalize.scss */
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+/* line 299, ../sass/_normalize.scss */
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+/* line 310, ../sass/_normalize.scss */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+/* line 322, ../sass/_normalize.scss */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Change the border, margin, and padding in all browsers (opinionated).
+ */
+/* line 333, ../sass/_normalize.scss */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+/* line 346, ../sass/_normalize.scss */
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */
+}
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+/* line 359, ../sass/_normalize.scss */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+/* line 368, ../sass/_normalize.scss */
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+/* line 378, ../sass/_normalize.scss */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+/* line 388, ../sass/_normalize.scss */
+[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.
+ */
+/* line 397, ../sass/_normalize.scss */
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Correct the text style of placeholders in Chrome, Edge, and Safari.
+ */
+/* line 406, ../sass/_normalize.scss */
+::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 0.54;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+/* line 416, ../sass/_normalize.scss */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/* line 21, ../../../../../../../../usr/local/lib/ruby/gems/2.4.0/gems/susy-2.2.12/sass/susy/language/susy/_box-sizing.scss */
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 17, ../sass/screen.scss */
+body {
+  background: #252525;
+}
+
+/* line 21, ../sass/screen.scss */
+html body {
+  background: #252525;
+  color: #fff;
+}
+
+/* line 25, ../sass/screen.scss */
+.container-fluide {
+  background: #252525;
+  color: #fff;
+  min-height: 100vh;
+  height: 100%;
+}
+/* line 31, ../sass/screen.scss */
+.container-fluide .menu {
+  display: none;
+}
+/* line 36, ../sass/screen.scss */
+.container-fluide .app {
+  width: 100%;
+  margin: 0 auto;
+}
+/* line 38, ../sass/screen.scss */
+.container-fluide .app .app-container {
+  position: relative;
+}
+/* line 42, ../sass/screen.scss */
+.container-fluide .app .main-screen {
+  width: 100%;
+}
+@media (min-width: 0) and (max-width: 800px) {
+  /* line 42, ../sass/screen.scss */
+  .container-fluide .app .main-screen {
+    width: 100%;
+  }
+}
+/* line 49, ../sass/screen.scss */
+.container-fluide .app .secondary-screen {
+  width: 50%;
+  float: left;
+}
+@media (min-width: 0) and (max-width: 800px) {
+  /* line 49, ../sass/screen.scss */
+  .container-fluide .app .secondary-screen {
+    display: none;
+  }
+}
+/* line 58, ../sass/screen.scss */
+.container-fluide .app .secondary-screen > div > header > h2, .container-fluide .app .secondary-screen > div > header h4 {
+  text-align: center;
+  font-family: 'Cabin';
+}
+/* line 63, ../sass/screen.scss */
+.container-fluide .app .secondary-screen > div > header > h2 {
+  margin-bottom: 0;
+  color: #b3b046;
+}
+/* line 68, ../sass/screen.scss */
+.container-fluide .app .secondary-screen > div > header > h4 {
+  margin-top: 0;
+  font-weight: lighter;
+}
+/* line 74, ../sass/screen.scss */
+.container-fluide .app .secondary-screen > div .recharts-responsive-container {
+  margin: 0 auto;
+}
+@media (min-width: 0) and (max-width: 800px) {
+  /* line 36, ../sass/screen.scss */
+  .container-fluide .app {
+    width: 100%;
+  }
+}
+/* line 87, ../sass/screen.scss */
+.container-fluide .app header {
+  position: relative;
+  position: fixed;
+  padding-top: 5px;
+  padding-bottom: 25px;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  background-color: #252525;
+}
+/* line 99, ../sass/screen.scss */
+.container-fluide .app header div.statsbar {
+  width: 50%;
+  float: left;
+}
+/* line 100, ../sass/screen.scss */
+.container-fluide .app header div.statsbar.highs {
+  padding: 12px 0px 0px 80px;
+}
+/* line 103, ../sass/screen.scss */
+.container-fluide .app header div.statsbar.lows {
+  padding: 12px 80px 0px 0px;
+}
+/* line 109, ../sass/screen.scss */
+.container-fluide .app header div.statsbar.highs span.active.petitCarre {
+  background-color: #73B101;
+}
+/* line 112, ../sass/screen.scss */
+.container-fluide .app header div.statsbar.lows span.active.petitCarre {
+  background-color: red;
+}
+/* line 120, ../sass/screen.scss */
+.container-fluide .app header > .logo {
+  position: absolute;
+  top: 0px;
+  width: 160px;
+  padding-top: 6px;
+  text-align: center;
+  width: 100%;
+}
+/* line 127, ../sass/screen.scss */
+.container-fluide .app header > .logo h1 {
+  font-family: 'Lato';
+  font-weight: lighter;
+  letter-spacing: 2px;
+  margin: 0;
+  font-size: 40px;
+}
+/* line 134, ../sass/screen.scss */
+.container-fluide .app header > .logo h2 {
+  letter-spacing: 0px;
+  font-family: "gotham narrow";
+  font-weight: 200;
+  font-size: 11px;
+  margin: 0;
+  white-space: nowrap;
+}
+/* line 144, ../sass/screen.scss */
+.container-fluide .app header span.petitCarre {
+  width: 8px;
+  height: 8px;
+  margin: 2px;
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  content: "";
+  background-color: #2a2b2a;
+  transition: background-color 1s;
+}
+/* line 154, ../sass/screen.scss */
+.container-fluide .app header span.petitCarre.active {
+  transition: background-color 1s;
+}
+/* line 159, ../sass/screen.scss */
+.container-fluide .app header div.carreContainer {
+  width: 100%;
+  text-align: center;
+  height: 12px;
+}
+/* line 166, ../sass/screen.scss */
+.container-fluide .app div.message {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #73b101;
+}
+/* line 172, ../sass/screen.scss */
+.container-fluide .app .highs-column {
+  color: #73b101;
+}
+/* line 174, ../sass/screen.scss */
+.container-fluide .app .highs-column a {
+  color: #73b101 !important;
+}
+/* line 176, ../sass/screen.scss */
+.container-fluide .app .highs-column .tick.active {
+  background-color: #73b101 !important;
+  color: #fff !important;
+}
+/* line 177, ../sass/screen.scss */
+.container-fluide .app .highs-column .tick.active div.cell {
+  background-color: #73b101 !important;
+}
+/* line 182, ../sass/screen.scss */
+.container-fluide .app .highs-column .tick.active a {
+  color: #fff !important;
+}
+/* line 186, ../sass/screen.scss */
+.container-fluide .app .lows-column {
+  color: #ff0100;
+}
+/* line 188, ../sass/screen.scss */
+.container-fluide .app .lows-column a {
+  color: #ff0100 !important;
+}
+/* line 189, ../sass/screen.scss */
+.container-fluide .app .lows-column .tick.active {
+  background-color: #ff0100 !important;
+  color: #fff !important;
+}
+/* line 190, ../sass/screen.scss */
+.container-fluide .app .lows-column .tick.active div.cell {
+  background-color: #ff0100 !important;
+}
+/* line 195, ../sass/screen.scss */
+.container-fluide .app .lows-column .tick.active a {
+  color: #fff !important;
+}
+/* line 199, ../sass/screen.scss */
+.container-fluide .app .tick-column {
+  margin-top: 85px;
+  height: 1200px;
+  overflow: scroll;
+  width: 50%;
+  float: left;
+  font-family: Cabin;
+}
+/* line 206, ../sass/screen.scss */
+.container-fluide .app .tick-column a {
+  text-decoration: none;
+}
+/* line 211, ../sass/screen.scss */
+.container-fluide .app .tick-column .tick:nth-child(odd) {
+  background: #2a2b2a;
+}
+/* line 213, ../sass/screen.scss */
+.container-fluide .app .tick-column .tick:nth-child(odd) div.cell {
+  background: #2a2b2a;
+}
+/* line 218, ../sass/screen.scss */
+.container-fluide .app .tick-column .tick:nth-child(even) {
+  background: #353535;
+}
+/* line 220, ../sass/screen.scss */
+.container-fluide .app .tick-column .tick:nth-child(even) div.cell {
+  background: #353535;
+}
+/* line 225, ../sass/screen.scss */
+.container-fluide .app .tick-column .tick {
+  text-align: center;
+}
+/* line 232, ../sass/screen.scss */
+.container-fluide .app .tick-column .tick > div.back {
+  display: none;
+}
+/* line 236, ../sass/screen.scss */
+.container-fluide .app .tick-column .tick div.cell {
+  background: transparent;
+  width: 33.33333%;
+  margin: 0;
+  float: left;
+  padding: 10px 0;
+  position: relative;
+}
+/* line 244, ../sass/screen.scss */
+.container-fluide .app .tick-column .tick div.cell.stocktwits::before {
+  position: absolute;
+  left: 0;
+  display: block;
+  content: "";
+  width: 17px;
+  height: 17px;
+  background-image: url("../imgs/stock-tweets.svg?v=2");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* line 261, ../sass/screen.scss */
+div.cf {
+  *zoom: 1;
+}
+/* line 38, ../../../../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/general/_clearfix.scss */
+div.cf:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media (min-width: 0) and (max-width: 800px) {
+  /* line 265, ../sass/screen.scss */
+  .hide-mobile {
+    display: none;
+  }
+}
+
+/* line 271, ../sass/screen.scss */
+.navbar {
+  background-color: #222 !important;
+  background-image: none !important;
+}
+
+/* line 276, ../sass/screen.scss */
+a.subscribe-button {
+  cursor: pointer;
+  display: inline-block;
+  font-family: Lato;
+  color: #BFBFBF;
+  font-weight: 200;
+  width: 20%;
+  height: 40px;
+  text-align: center;
+  padding-top: 10px;
+  /*transition: .5s all;*/
+  white-space: nowrap;
+}
+@media (min-width: 0) and (max-width: 800px) {
+  /* line 276, ../sass/screen.scss */
+  a.subscribe-button {
+    width: 50%;
+  }
+}
+@media (min-width: 0) and (max-width: 800px) {
+  /* line 276, ../sass/screen.scss */
+  a.subscribe-button {
+    display: none;
+  }
+}
+
+/* line 297, ../sass/screen.scss */
+a.subscribe-button.active {
+  font-weight: bold;
+  transition: .5s all;
+}
+
+/* line 302, ../sass/screen.scss */
+.tab-content-enter {
+  opacity: 0.1;
+}
+
+/* line 306, ../sass/screen.scss */
+.tab-content-enter.tab-content-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+
+/* line 311, ../sass/screen.scss */
+.tab-content-leave {
+  opacity: 1;
+}
+
+/* line 315, ../sass/screen.scss */
+.tab-content-leave.tab-content-leave-active {
+  opacity: 0.01;
+  transition: opacity 200ms ease-in;
+}
+
+/* line 320, ../sass/screen.scss */
+.action-icon:hover {
+  color: green !important;
+}
+
+/* line 324, ../sass/screen.scss */
+.alert-form-input {
+  background: #212121;
+  border: 1px inset #73B101;
+  color: #BFBFBF;
+  padding: 2px 7px;
+  line-height: 25px;
+  -moz-box-shadow: #73b101 0 0 10px, rgba(115, 177, 1, 0.3) 0 0 3px 1px inset;
+  -webkit-box-shadow: #73b101 0 0 10px, rgba(115, 177, 1, 0.3) 0 0 3px 1px inset;
+  box-shadow: #73b101 0 0 10px, rgba(115, 177, 1, 0.3) 0 0 3px 1px inset;
+}
+/* line 331, ../sass/screen.scss */
+.alert-form-input:hover {
+  -moz-box-shadow: #73b101 0 0 10px, rgba(115, 177, 1, 0.3) 0 0 3px 1px inset;
+  -webkit-box-shadow: #73b101 0 0 10px, rgba(115, 177, 1, 0.3) 0 0 3px 1px inset;
+  box-shadow: #73b101 0 0 10px, rgba(115, 177, 1, 0.3) 0 0 3px 1px inset;
+}
+
+/* line 336, ../sass/screen.scss */
+.alert-form-input.error-input {
+  -moz-box-shadow: red 0 0 10px, rgba(255, 0, 0, 0.3) 0 0 3px 1px inset;
+  -webkit-box-shadow: red 0 0 10px, rgba(255, 0, 0, 0.3) 0 0 3px 1px inset;
+  box-shadow: red 0 0 10px, rgba(255, 0, 0, 0.3) 0 0 3px 1px inset;
+  border: 1px inset red !important;
+}
+/* line 339, ../sass/screen.scss */
+.alert-form-input.error-input:hover {
+  -moz-box-shadow: red 0 0 10px, rgba(255, 0, 0, 0.3) 0 0 3px 1px inset;
+  -webkit-box-shadow: red 0 0 10px, rgba(255, 0, 0, 0.3) 0 0 3px 1px inset;
+  box-shadow: red 0 0 10px, rgba(255, 0, 0, 0.3) 0 0 3px 1px inset;
+}
+
+/* line 344, ../sass/screen.scss */
+.alert-table-row a {
+  text-decoration: none;
+  color: #bfbfbf;
+}
+/* line 347, ../sass/screen.scss */
+.alert-table-row a:hover {
+  border-bottom: 1px dashed #bfbfbf;
+}
+
+/* line 355, ../sass/screen.scss */
+.quote-item-cell span {
+  font-weight: bold;
+  padding-right: 10px;
+}

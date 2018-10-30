@@ -1,0 +1,12 @@
+[Unit]
+Description=momo.web gunicorn daemon
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/opt/venv/momo.web/momo.web/src/
+ExecStart=/opt/venv/momo.web/bin/gunicorn momo.wsgi:application --conf /opt/venv/momo.web/momo.web/contrib/gunicorn.py
+
+[Install]
+WantedBy=multi-user.target
